@@ -1,0 +1,12 @@
+
+.idea/
+
+source/
+
+TODO.md
+
+rewrite/.env
+
+rewrite/clever/__pycache__/
+
+rewrite/database/__pycache__/
