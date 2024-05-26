@@ -10,3 +10,5 @@ rewrite/.env
 rewrite/clever/__pycache__/
 
 rewrite/database/__pycache__/
+
+rewrite/arbuz/__pycache__/

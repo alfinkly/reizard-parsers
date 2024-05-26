@@ -12,10 +12,10 @@ class ORM:
         self.category_repo = None
         self.product_repo = None
 
-    async def get_async_engine(self):
+    async def get_async_engine(self, echo=False):
         async_engine = create_async_engine(
             url=self.settings.asyncpg_url(),
-            echo=True
+            echo=echo
         )
         return async_engine
 
@@ -52,9 +52,9 @@ class UrlRepo:
                      .filter_by(id=1))
             await session.execute(query)
 
-    async def select_urls(self):
+    async def select_urls(self, site_id):
         async with self.engine.connect() as session:
-            query = (select(Url))
+            query = (select(Url).filter_by(site_id=site_id))
             result = await session.execute(query)
             urls = result.all()
             print(f"{urls=}")
@@ -79,32 +79,36 @@ class ProductRepo:
 
     async def insert_or_update_product(self, product: Product):
         async with self.engine.connect() as s:
+            query = (select(Product)
+                     .filter_by(link=product.link))
+            result = await s.execute(query)
+            if result.one_or_none() is None:
 
-            query = (insert(Product)
-                     .values(name=product.name,
-                             price=product.price,
-                             link=product.link,
-                             image_url=product.image_url,
-                             category_id=product.category_id))
-            await s.execute(query)
-            await s.commit()
+                query = (insert(Product)
+                         .values(name=product.name,
+                                 price=product.price,
+                                 link=product.link,
+                                 image_url=product.image_url,
+                                 category_id=product.category_id))
+                await s.execute(query)
+                await s.commit()
 
 
 class CategoryRepo:
     def __init__(self, engine: AsyncEngine):
         self.engine = engine
 
-    async def get_category(self, category_name):
+    async def get_category(self, category: Category):
         async with self.engine.connect() as s:
-            query = select(Category).filter_by(name=category_name)
+            query = (select(Category).filter_by(name=category.name))
             result = await s.execute(query)
-            category = result.one_or_none()
-            if category is not None:
-                return category
+            scalar = result.scalar_one_or_none()
+            # print(f"{scalar=}")
+            if scalar is not None:
+                return scalar
             else:
                 query = (insert(Category)
-                         .values(name=category_name))
+                         .values(name=category.name, site_id=category.site_id))
                 await s.execute(query)
                 await s.commit()
-                await self.get_category(category_name)
-
+                return await self.get_category(category)

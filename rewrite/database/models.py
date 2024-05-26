@@ -34,7 +34,7 @@ class Product(Base):
 
     id: Mapped[intpk]
     name: Mapped[str]
-    price: Mapped[int]
+    price: Mapped[str]
     link: Mapped[str]
     image_url: Mapped[str]
     category_id: Mapped[int] = mapped_column(ForeignKey("categories.id", ondelete="CASCADE"))
@@ -50,3 +50,4 @@ class Category(Base):
 
     id: Mapped[intpk]
     name: Mapped[str]
+    site_id: Mapped[int] = mapped_column(ForeignKey("sites.id", ondelete="CASCADE"))
