@@ -9,8 +9,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-from rewrite.database.database import ORM
-from rewrite.database.models import Product, Category
+from database.database import ORM
+from database.models import Product, Category
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")

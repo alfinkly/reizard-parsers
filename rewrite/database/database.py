@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, select, update, insert, Engine
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncEngine
 
-from rewrite.database.config import EnvSettings
-from rewrite.database.models import Base, Site, Url, Product, Category
+from database.config import EnvSettings
+from database.models import Base, Site, Url, Product, Category
 
 
 class ORM:

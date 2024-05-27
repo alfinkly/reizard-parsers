@@ -2,9 +2,9 @@ import asyncio
 
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from rewrite.arbuz.main import parse_arbuz
-from rewrite.clever.main import parse_clever
-from rewrite.database.database import ORM, UrlRepo
+from arbuz.main import parse_arbuz
+from clever.main import parse_clever
+from database.database import ORM, UrlRepo
 
 orm = ORM()
 

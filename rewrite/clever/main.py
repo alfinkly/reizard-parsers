@@ -8,8 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 from datetime import datetime
 
-from rewrite.database.database import ORM, UrlRepo, CategoryRepo
-from rewrite.database.models import Product, Category
+from database.database import ORM, UrlRepo, CategoryRepo
+from database.models import Product, Category
 
 
 chrome_options = webdriver.ChromeOptions()
