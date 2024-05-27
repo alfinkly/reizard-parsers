@@ -61,7 +61,7 @@ async def parse_arbuz(orm: ORM):
                                       'pagination%22%7D%5D'
             page_url = base_url_template.format(1)
             driver.get(page_url)
-            time.sleep(2)
+            time.sleep(10)
             page_buttons = driver.find_elements(By.XPATH,
                                                 '/html/body/div[1]/main/section/div/section/div[2]/div[6]/nav/ul/*')
             category_name = driver.find_element(By.XPATH,
@@ -72,7 +72,7 @@ async def parse_arbuz(orm: ORM):
 
                 driver.get(page_url)
                 print(page_url)
-                time.sleep(5)
+                time.sleep(10)
 
                 driver.execute_script("window.location.reload();")
                 try:
