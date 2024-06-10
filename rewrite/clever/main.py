@@ -2,13 +2,8 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import async_sessionmaker
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-from datetime import datetime
-
-from database.database import ORM, UrlRepo, CategoryRepo
 from database.models import Product, Category
 
 

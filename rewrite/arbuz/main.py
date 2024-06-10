@@ -12,6 +12,7 @@ from selenium.common.exceptions import TimeoutException
 from database.database import ORM
 from database.models import Product, Category
 
+
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument('--no-sandbox')

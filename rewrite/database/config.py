@@ -1,4 +1,3 @@
-import os
 from environs import Env
 
 
@@ -17,3 +16,5 @@ class EnvSettings:
         self.user = env.str("DB_USER")
         self.password = env.str("DB_PASSWORD")
         self.dbname = env.str("DB_NAME")
+        self.browser = env.str("BROWSER")
+        self.bot_token = env.str("BOT_TOKEN")
