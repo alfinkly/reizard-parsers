@@ -43,7 +43,7 @@ class ORM:
         self.url_repo = UrlRepo(await self.get_async_engine())
         self.category_repo = CategoryRepo(await self.get_async_engine())
         self.product_repo = ProductRepo(await self.get_async_engine())
-        self.product_repo = ProductRepo(await self.get_async_engine())
+        self.user_repo = UserRepo(await self.get_async_engine())
 
 class Repo:
     def __init__(self, engine: AsyncEngine):

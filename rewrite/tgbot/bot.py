@@ -17,4 +17,4 @@ async def run_tgbot(orm: ORM):
     dp.message.middleware(ORMMiddleware(orm))
     dp.callback_query.middleware(ORMMiddleware(orm))
     dp.include_routers(home.router)
-    await dp.start_polling(bot=bot)
+    await dp.start_polling(bot)
