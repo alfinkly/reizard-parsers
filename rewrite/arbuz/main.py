@@ -49,7 +49,7 @@ async def parse_page(orm, category_url, category_name):
         category = Category()
         category.name = category_name
         category.site_id = 2
-        product.category_id = (await orm.category_repo.get_category(category))
+        product.category_id = (await orm.category_repo.get_category_id(category))
         await orm.product_repo.insert_or_update_product(product)
         products.append(product)
 
@@ -58,7 +58,7 @@ async def parse_arbuz(orm: ORM):
     while True:
         category_urls = await orm.url_repo.select_urls(2)
         for url in category_urls:
-            base_url_template = url[1] + '#/?%5B%7B%22slug%22%3A%22page%22,%22value%22%3A{}%2C%22component%22%3A%22' \
+            base_url_template = url.url + '#/?%5B%7B%22slug%22%3A%22page%22,%22value%22%3A{}%2C%22component%22%3A%22' \
                                       'pagination%22%7D%5D'
             page_url = base_url_template.format(1)
             driver.get(page_url)

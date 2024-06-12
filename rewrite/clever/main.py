@@ -52,7 +52,7 @@ async def parse_clever(orm):
                 category = Category()
                 category.name = category_name
                 category.site_id = 1
-                product.category_id = (await orm.category_repo.get_category(category))
+                product.category_id = await orm.category_repo.get_category_id(category)
                 await orm.product_repo.insert_or_update_product(product)
         print(f"Start pause - {(seconds := 300)} sec")
         time.sleep(seconds)

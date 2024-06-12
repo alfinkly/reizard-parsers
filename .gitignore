@@ -11,8 +11,10 @@ rewrite/clever/__pycache__/
 
 rewrite/database/__pycache__/
 
-rewrite/arbuz/__pycache__/
+__pycache__/
 
 rewrite/venv/
 
 .env
+rewrite/tgbot/handlers/clean_it.py
+
