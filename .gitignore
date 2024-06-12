@@ -18,3 +18,7 @@ rewrite/venv/
 .env
 rewrite/tgbot/handlers/clean_it.py
 
+
+*.log
+
+sqls/
