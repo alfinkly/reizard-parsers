@@ -90,7 +90,8 @@ class User(Base):
 
     id: Mapped[intpk]
     tg_id: Mapped[int]
-    name: Mapped[str]
+    fullname: Mapped[str]
     username: Mapped[str]
+    phone_number: Mapped[str]
     created_at: Mapped[created_at_pk]
     updated_at: Mapped[updated_at_pk]

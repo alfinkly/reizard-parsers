@@ -5,7 +5,8 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 
 from arbuz.main import parse_arbuz
 from clever.main import parse_clever
-from database.database import ORM, UrlRepo
+from database.database import ORM
+from database.site import UrlRepo
 from tgbot.bot import run_tgbot
 
 
